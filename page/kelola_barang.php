@@ -88,7 +88,6 @@
         <div class="kt-box2">
             <div class="kt-head">
                 <h3 class="h3-kt2">Kelola Barang</h3>
-                <button>Tambah Barang</button>
                 <form class="search-bar" action="" method="get">
                     <input type="search" name="cari-tr" id="" placeholder="Cari Barang">
                     <input type="submit" value="Cari">
@@ -100,6 +99,8 @@
                 <input type="text" name="tambah-jenis-br" id="">
                 <input type="submit" value="Tambah">
             </form>
+
+            <button id="refresh" onclick="window.location='http://localhost/pengiriman/page/kelola_barang.php'">refresh</button>
 
             <div class="kt-body">
             
@@ -116,7 +117,26 @@
             <?php
              include "../koneksi.php";
 
-             $sql = mysqli_query($koneksi, "SELECT * FROM tb_barang");
+             // menampilkan data pada tabel dengan fungsi pencarian
+
+             // jika user menginput data pada kolom pencarian maka data yang tampil
+             // berdasarkan pada atribut yang dicari user pada kolom pencarian
+             if (isset($_GET['cari-tr'])) {
+
+                $src_val = $_GET['cari-tr'];
+
+                $sql = mysqli_query($koneksi, "SELECT * FROM tb_barang WHERE id_barang='$src_val'
+                || jenis_barang='$src_val'
+                
+                ");
+
+            // jika user tidak menggunakan fungsi pencarian maka secara default data yang tampil merupakan
+            // data dari tabel transaksi
+             } else{
+                $sql = mysqli_query($koneksi, "SELECT * FROM tb_barang");
+             }
+
+             
              if ($sql->num_rows > 0) {
                 // output data dari database
                 while($row = $sql->fetch_assoc()) {
@@ -124,7 +144,7 @@
                 
             ?>
 
-			<tr>
+			<tr id="opsi">
 
 				<td><?php echo $row["id_barang"]; ?></td>
 				<td id="<?php echo $row['id_barang']; ?>"><?php echo $row["jenis_barang"]; ?></td>
@@ -150,34 +170,35 @@
                                 function _edit(edit_param){
 
                                     // buat elemen tombol batalkan
-                                    var b = document.createElement("BUTTON");
+                                    let b = document.createElement("BUTTON");
                                     // set atribut untuk tombol batalkan
-                                    b.innerHTML = "Batalkan";
+                                    b.innerHTML = "Batalkan edit";
                                     b.setAttribute("id", "cncl-btn");
                                     b.setAttribute("onclick", "window.location='http://localhost/pengiriman/page/kelola_barang.php'");
                                     // ubah tombol edit menjadi batalkan
-                                    document.getElementById("edit-btn").replaceWith(b);
+                                    let btc = document.getElementById("edit-btn");
+                                    btc.replaceWith(b);
                                     // buat element form
-                                    var f = document.createElement("FORM");
+                                    let f = document.createElement("FORM");
                                     // set atribut untuk form
                                     f.setAttribute("action", "<?php $_SERVER['PHP_SELF'] ?>");
                                     f.setAttribute("method", "post");
                                     // tangkap elemen untuk diubah
                                     document.getElementById(edit_param).appendChild(f);
                                     // buat elemen input sebagai isi dari form
-                                    var h = document.createElement("INPUT");
+                                    let h = document.createElement("INPUT");
                                     // buat atribut untuk elemen id
                                     h.setAttribute("type", "hidden");
                                     h.setAttribute("name", "id")
                                     h.setAttribute("value", edit_param);
                                     // buat atribut untuk elemen input
-                                    var i = document.createElement("INPUT");
+                                    let i = document.createElement("INPUT");
                                     i.setAttribute("type", "text");
                                     i.setAttribute("name", "ubah-barang")
                                     i.setAttribute("placeholder", "Jenis Barang Baru");
                                     i.setAttribute("required", '');
                                     // buat elemen submit
-                                    var s = document.createElement("INPUT");
+                                    let s = document.createElement("INPUT");
                                     // buat atribut untuk elemen submit
                                     s.setAttribute("type", "submit");
                                     s.setAttribute("value", "Ubah");
@@ -206,11 +227,11 @@
                                                 
                                                 
                                                 mysqli_query($koneksi, "INSERT INTO tb_barang (id_barang, jenis_barang) VALUES ('$id', '$val')");
-                                                break;
+                                                
                                                
                                                 echo "<script>";
                                                 echo "window.location='http://localhost/pengiriman/page/kelola_barang.php';";
-                                                echo "</script";
+                                                echo "</script>";
 
                                             
                                         } 
@@ -225,8 +246,8 @@
                         
                                             echo "<script>";
                                             echo "window.location='http://localhost/pengiriman/page/kelola_barang.php';";
-                                            echo "</script";
-                                        }
+                                            echo "</script>";
+                                        } break;
                                     }
 
                             ?>

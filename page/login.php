@@ -21,7 +21,7 @@
         <span>Nama Pengguna:</span>
         <input type="text" name="username" id="">
         <span>Password:</span>
-        <input type="text" name="password">
+        <input type="password" name="password">
 
         <!-- <input type="submit" value="Login"> -->
         <input type="submit" value="Login">
