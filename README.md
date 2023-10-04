@@ -1,2 +1,2 @@
-# Operasi CRUD sederhana pada mySQL dengan PHP
-# Simple CRUD operation on mySQL using PHP
+## Operasi CRUD sederhana pada mySQL dengan PHP
+## _Simple CRUD operation on mySQL using PHP_ 
