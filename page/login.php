@@ -8,13 +8,7 @@
 </head>
 <body>
 
-    <?php 
-	if(isset($_GET['pesan'])){
-		if($_GET['pesan']=="gagal"){
-			echo "<div class='alert'>Username dan Password tidak sesuai !</div>";
-		}
-	}
-	?>
+    
 
     <div class="login">
     <form action="../cek_login.php" method="post">
@@ -25,6 +19,14 @@
 
         <!-- <input type="submit" value="Login"> -->
         <input type="submit" value="Login">
+
+        <?php 
+        if(isset($_GET['pesan'])){
+            if($_GET['pesan']=="gagal"){
+                echo "<div class='alert'>Username dan Password tidak sesuai !</div>";
+            }
+        }
+        ?>
     </form>
     </div>
 </body>

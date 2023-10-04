@@ -112,7 +112,10 @@
 
                 <div>
                     <label for="input-form" id="test">Level</label>
-                    <input type="text" name="tambah-level" id="">
+                    <select name="tambah-level" id="">
+                        <option value="admin">admin</option>
+                        <option value="petugas">petugas</option>
+                    </select>
                 </div>
 
                 <input type="submit" value="Tambah">
@@ -216,7 +219,7 @@
                                     // buat atribut untuk elemen input nol
                                     let i1 = document.createElement("INPUT");
                                     i1.setAttribute("type", "text");
-                                    i1.setAttribute("name", "ubah-name");
+                                    i1.setAttribute("name", "ubah-user");
                                     i1.setAttribute("placeholder", "nama baru");
                                     i1.setAttribute("required", '');
                                     // buat atribut untuk elemen input pertama
@@ -284,14 +287,14 @@
                                         } 
                                         
                                         
-                                         if (isset($_POST['ubah-nama'])) {
+                                         if (isset($_POST['ubah-user'])) {
                                             $id = $_POST['id'];
-                                            $name = $_POST['tambah-user'];
-                                            $username_val = $_POST['tambah-username'];
-                                            $password_val = $_POST['tambah-password'];
-                                            $level_val = $_POST['tambah-level'];
+                                            $name = $_POST['ubah-user'];
+                                            $username_val = $_POST['ubah-username'];
+                                            $password_val = $_POST['ubah-password'];
+                                            $level_val = $_POST['ubah-level'];
                                             
-                                            mysqli_query($koneksi, "update user set 'name' = '$name', username = '$username_val', password='$password_val', level='$level_val' where id_layanan='$id'");
+                                            mysqli_query($koneksi, "update user set name='$name', username='$username_val', password='$password_val', level='$level_val' where id_layanan='$id'");
                         
                                             echo "<script>";
                                             echo "window.location='http://localhost/pengiriman/page/user.php';";

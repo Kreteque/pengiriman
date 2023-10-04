@@ -17,7 +17,7 @@ html{
 .login{
     background-color: aquamarine;
     width: 200px;
-    height: 100px;
+    height: 150px;
     padding: 50px;
     margin: 300px;
 }
@@ -168,4 +168,8 @@ html{
 
 #input-form-ly{
    margin-bottom: 15px;
+}
+
+.alert{
+    color: red;
 }

@@ -97,7 +97,7 @@
                 // kumpulkan data form
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $id = NULL;
-                    $id_transaksi = "pgr" . "-" ."260923";
+                    $id_transaksi = "pgr" . "-" ."2609";
                     $nama_pengirim = $_POST['nama_pengirim'];
                     $nama_penerima = $_POST['nama_penerima'];
                     $alamat_pengirim = $_POST['alamat_pengirim'];
