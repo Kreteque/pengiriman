@@ -1,4 +1,4 @@
-## **Operasi CRUD sederhana pada mySQL dengan PHP**
+## **Aplikasi Sederhana Dengan PHP dan MySQL**
 > Aplikasi ini mengimplementasikan konsep aplikasi pengiriman barang
 ------------------------------------------------
 **Cara menjalankan program:**
