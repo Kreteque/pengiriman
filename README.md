@@ -1,5 +1,5 @@
 ## **Aplikasi Sederhana Dengan PHP dan MySQL**
-Aplikasi ini mengimplementasikan konsep aplikasi pengiriman barang
+- Aplikasi ini mengimplementasikan konsep aplikasi pengiriman barang
 ------------------------------------------------
 **Cara menjalankan program:**
 1. Mengimport database
