@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/style.css">
     <title>Buat Transaksi</title>
+    <link rel="stylesheet" href="../assets/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/styles/bootstrap.min.css">
 </head>
 <body>
 
@@ -67,7 +69,8 @@
                             ?>
                         </select>
 
-                        <label for="layanan">Jenis layanan</label>
+                        <!-- tampil harga layanan -->
+                        <label for="layanan">Jenis layanan</label> 
                         <select name="layanan" id="" required>
                             <?php 
                             include "../koneksi.php";
@@ -79,7 +82,7 @@
                                 
                             ?>
 
-                            <option value="<?php echo $row['jenis_layanan'] ?>"><?php echo $row['jenis_layanan'] ?></option>
+                            <option value="<?php echo $row['jenis_layanan'] ?>"><?php echo $row['jenis_layanan'] ?> : Rp.<?php echo $row['harga_layanan'] ?></option>
                             <?php
                                 }
                             }
@@ -93,11 +96,14 @@
             
             <?php
                 
+                $date = date_create();
+                $date_formated = date_format($date, "Y-m-d");
+                $date_toId = date_format($date, "dmyh");
                 
                 // kumpulkan data form
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $id = NULL;
-                    $id_transaksi = "pgr" . "-" ."2609";
+                    $id_transaksi = "pgr-" . $date_toId;
                     $nama_pengirim = $_POST['nama_pengirim'];
                     $nama_penerima = $_POST['nama_penerima'];
                     $alamat_pengirim = $_POST['alamat_pengirim'];
@@ -113,7 +119,8 @@
                     $resHargaLayanan = mysqli_fetch_array($hrg_layanan);
                     $harga_layanan = $resHargaLayanan[0];
                     // var_dump($harga_layanan);
-                    $tgl_pengiriman = '324324342';
+                   
+                    $tgl_pengiriman = $date_formated;
 
 
                     // masukan ke database

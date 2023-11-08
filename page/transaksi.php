@@ -32,10 +32,11 @@
             color: #313030;
         }
     </style>
+
+    <link rel="stylesheet" href="../assets/styles/bootstrap.min.css">
     
 </head>
 <body>
-
     <?php
 	session_start();
 
@@ -51,6 +52,7 @@
 
 
 <div class="kt-container">
+    
     <div class="kt-box1">
         <div class="kt-user">
                 <img class='pp' src='http://localhost/pengiriman/assets/images/generic-profile.webp' alt='pp'>
@@ -95,15 +97,17 @@
             <h3 class="h3-kt2" id="h3-kt2">List Transaksi</h3>
             <button id="buat-tr-btn" onclick="window.location='http://localhost/pengiriman/page/buat_transaksi.php'">Buat Transaksi</button>
             <form class="search-bar" action="<?php $_SERVER['PHP_SELF'] ?>" method="get" id="search-bar">
-                <input type="search" name="cari-tr"  placeholder="Cari Transaksi">
-                <input type="submit" value="Cari">
+               <div class="input-group">
+                <input type="search" name="cari-tr"  placeholder="Cari Transaksi" class="form-control">
+                <input type="submit" value="Cari" class="btn btn-outline-primary">
+               </div>
             </form>
             
         </div>
         <div class="kt-body" id="kt-body">
         
         <!-- tombol reset untuk menampilkan data transaksi setelah pencarian -->
-        <button id="reset" onclick="window.location='http://localhost/pengiriman/page/transaksi.php'">Reset</button>
+        <button id="reset" onclick="window.location='http://localhost/pengiriman/page/transaksi.php'">refresh</button>
 
         <table>
 		<thead>

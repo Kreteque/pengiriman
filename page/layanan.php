@@ -32,6 +32,9 @@
             color: #313030;
         }
     </style>
+
+<link rel="stylesheet" href="../assets/styles/bootstrap.min.css">
+
 </head>
 <body>
     <?php
@@ -157,12 +160,12 @@
 
 				<td><?php echo $row["id_layanan"]; ?></td>
 				<td id="<?php echo $row['id_layanan']; ?>"><?php echo $row["jenis_layanan"]; ?></td>
-                <td id="<?php echo $row['id_layanan']; ?>"><?php echo $row["harga_layanan"]; ?></td>
+                <td id="<?php echo $row['id_layanan']; ?>">Rp. <?php echo $row["harga_layanan"]; ?></td>
             
                 <td >
                     <div>
                         <div>
-                            <button id="edit-btn" onclick="_edit(<?php echo $row['id_layanan']; ?>)">
+                            <button id="edit-btn" onclick="_edit_layanan(<?php echo $row['id_layanan']; ?>)">
                                 Edit
                             </button>
                             <button id="del-btn" onclick="_delete(<?php echo $row['id_layanan']; ?>)">
@@ -177,57 +180,19 @@
                                     : console.log('OK');
                                 }
 
-                                function _edit(edit_param){
+                                function _edit_layanan(_ed_id_param){
 
-                                    // buat elemen tombol batalkan
-                                    let b = document.createElement("BUTTON");
-                                    // set atribut untuk tombol batalkan
-                                    b.innerHTML = "Batalkan edit";
-                                    b.setAttribute("id", "cncl-btn");
-                                    b.setAttribute("onclick", "window.location='http://localhost/pengiriman/page/layanan.php'");
-                                    // ubah tombol edit menjadi batalkan
-                                    let btc = document.getElementById("edit-btn");
-                                    btc.replaceWith(b);
-                                    // buat element form
-                                    let f = document.createElement("FORM");
-                                    // set atribut untuk form
-                                    f.setAttribute("action", "<?php $_SERVER['PHP_SELF'] ?>");
-                                    f.setAttribute("method", "post");
-                                    // tangkap elemen untuk diubah
-                                    document.getElementById(edit_param).appendChild(f);
-                                    // buat elemen input sebagai isi dari form
-                                    let h = document.createElement("INPUT");
-                                    // buat atribut untuk elemen id
-                                    h.setAttribute("type", "hidden");
-                                    h.setAttribute("name", "id")
-                                    h.setAttribute("value", edit_param);
-                                    // buat atribut untuk elemen input
-                                    let i = document.createElement("INPUT");
-                                    i.setAttribute("type", "text");
-                                    i.setAttribute("name", "ubah-layanan");
-                                    i.setAttribute("placeholder", "Jenis layanan Baru");
-                                    i.setAttribute("required", '');
-                                    // buat atribut untuk elemen input kedua
-                                    let j = document.createElement("INPUT");
-                                    j.setAttribute("type", "text");
-                                    j.setAttribute("name", "ubah-hrg-layanan");
-                                    j.setAttribute("placeholder", "Harga Layanan Baru");
-                                    j.setAttribute("required", '');
-                                    // buat elemen submit
-                                    let s = document.createElement("INPUT");
-                                    // buat atribut untuk elemen submit
-                                    s.setAttribute("type", "submit");
-                                    s.setAttribute("value", "Ubah");
-                                    s.setAttribute("id", "ubah-btn");
-                                    // gabungkan elemen form dengan input
-                                    f.appendChild(i);
-                                    // gabungkan elemen form dengan input kedua
-                                    f.appendChild(j);
-                                    // gabungkan elemen form dengan id
-                                    f.appendChild(h);
-                                    // gabungkan elemen form dengan submit
-                                    f.appendChild(s);
-                                    
+                                    window.location="http://localhost/pengiriman/page/edit-layanan.php?id=" + _ed_id_param
+
+                                    document.getElementById('h3-kt2').innerHTML=`Edit Transaksi`;
+
+                                    document.getElementById('search-bar').innerHTML = 
+                                    `
+                                        <div>
+                                            <button onclick="window.location='http://localhost/pengiriman/page/transaksi.php'">Kembali</button>
+                                            <button onclick="_print_detail();">Cetak Detail</button>
+                                        </div>
+                                    `;
                                 }
                             </script>
 

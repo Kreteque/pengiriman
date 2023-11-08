@@ -32,6 +32,9 @@
             color: #313030;
         }
     </style>
+
+<link rel="stylesheet" href="../assets/styles/bootstrap.min.css">
+
 </head>
 <body>
     <?php
@@ -152,7 +155,7 @@
                 <td >
                     <div>
                         <div>
-                            <button id="edit-btn" onclick="_edit(<?php echo $row['id_barang']; ?>)">
+                            <button id="edit-btn" onclick="_edit_barang(<?php echo $row['id_barang']; ?>)">
                                 Edit
                             </button>
                             <button id="del-btn" onclick="_delete(<?php echo $row['id_barang']; ?>)">
@@ -167,55 +170,24 @@
                                     : console.log('OK');
                                 }
 
-                                function _edit(edit_param){
+                                function _edit_barang(_ed_id_param){
 
-                                    // buat elemen tombol batalkan
-                                    let b = document.createElement("BUTTON");
-                                    // set atribut untuk tombol batalkan
-                                    b.innerHTML = "Batalkan edit";
-                                    b.setAttribute("id", "cncl-btn");
-                                    b.setAttribute("onclick", "window.location='http://localhost/pengiriman/page/kelola_barang.php'");
-                                    // ubah tombol edit menjadi batalkan
-                                    let btc = document.getElementById("edit-btn");
-                                    btc.replaceWith(b);
-                                    // buat element form
-                                    let f = document.createElement("FORM");
-                                    // set atribut untuk form
-                                    f.setAttribute("action", "<?php $_SERVER['PHP_SELF'] ?>");
-                                    f.setAttribute("method", "post");
-                                    // tangkap elemen untuk diubah
-                                    document.getElementById(edit_param).appendChild(f);
-                                    // buat elemen input sebagai isi dari form
-                                    let h = document.createElement("INPUT");
-                                    // buat atribut untuk elemen id
-                                    h.setAttribute("type", "hidden");
-                                    h.setAttribute("name", "id")
-                                    h.setAttribute("value", edit_param);
-                                    // buat atribut untuk elemen input
-                                    let i = document.createElement("INPUT");
-                                    i.setAttribute("type", "text");
-                                    i.setAttribute("name", "ubah-barang")
-                                    i.setAttribute("placeholder", "Jenis Barang Baru");
-                                    i.setAttribute("required", '');
-                                    // buat elemen submit
-                                    let s = document.createElement("INPUT");
-                                    // buat atribut untuk elemen submit
-                                    s.setAttribute("type", "submit");
-                                    s.setAttribute("value", "Ubah");
-                                    s.setAttribute("id", "ubah-btn");
-                                    // gabungkan elemen form dengan input
-                                    f.appendChild(i);
-                                    // gabungkan elemen form dengan id
-                                    f.appendChild(h);
-                                    // gabungkan elemen form dengan submit
-                                    f.appendChild(s);
+                                    window.location="http://localhost/pengiriman/page/edit-br.php?id=" + _ed_id_param
 
-                                    
+                                    document.getElementById('h3-kt2').innerHTML=`Edit Transaksi`;
+
+                                    document.getElementById('search-bar').innerHTML = 
+                                    `
+                                        <div>
+                                            <button onclick="window.location='http://localhost/pengiriman/page/transaksi.php'">Kembali</button>
+                                            <button onclick="_print_detail();">Cetak Detail</button>
+                                        </div>
+                                    `;
                                 }
                             </script>
 
                             <?php
-                                    
+                                    // kode php tambah barang
                                     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                                         
@@ -236,7 +208,7 @@
                                             
                                         } 
                                         
-                                        
+                                        // kode php ubah data
                                          if (isset($_POST['ubah-barang'])) {
                                             $id = $_POST['id'];
                                             $val = $_POST['ubah-barang'];
