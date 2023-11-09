@@ -29,10 +29,10 @@ html{
 }
 
 .kt-box1{
-    /* background-color: blueviolet; */
+    /* background-color: rgb(103, 199, 228); */
     width: 200px;
     margin: 10px;
-    height: fit-content;
+    height: 100vh;
     /* border-color: black;
     border-radius: 10px;
     border-style: double; */
@@ -46,9 +46,9 @@ html{
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
-    border-bottom: 8px;
+    /* border-bottom: 8px;
     border-bottom-style: solid;
-    border-bottom-color: gray;
+    border-bottom-color: gray; */
 }
 
 .user-pic{
@@ -172,4 +172,8 @@ html{
 
 .alert{
     color: red;
+}
+
+a.nav-link{
+    width: 100%;
 }

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../assets/styles/style.css">
     <title>Kelola Transaksi</title>
     <style>
-        img{
+        .pp{
             width: 60px;
             margin: 5px;
             height: 60px;
@@ -34,7 +34,7 @@
     </style>
 
     <link rel="stylesheet" href="../assets/styles/bootstrap.min.css">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
     <?php
@@ -57,36 +57,49 @@
         <div class="kt-user">
                 <img class='pp' src='http://localhost/pengiriman/assets/images/generic-profile.webp' alt='pp'>
             <div class="user-desc">
-                <span><?php echo $_SESSION['username']; ?></span><br>
-                <span><?php echo $_SESSION['level']; ?></span>
+                <span class="text-primary"><i class="bi bi-person-vcard"></i> <?php echo $_SESSION['username']; ?></span><br>
+                <span class="text-success"><i class="bi bi-shield"></i> <?php echo $_SESSION['level']; ?></span>
             </div>
         </div>
 
-        <div class="kt-menu1" id="kt-menu1">
-            <a href="http://localhost/pengiriman/page/transaksi.php" class="p-kt1">Kelola Transaksi</a>
-        </div>
+    <div class="text-white bg-light">
+    
+    <ul class="nav nav-pills flex-column mb-auto mt-auto">
+      <li class="nav-item">
+        <a href="http://localhost/pengiriman/page/transaksi.php" class="nav-link text-mute active" aria-current="page">
+        <i class="bi bi-stickies"></i>
+          Transaksi
+        </a>
+      </li>
+      <li>
+        <a href="http://localhost/pengiriman/page/kelola_barang.php" class="nav-link text-mute">
+        <i class="bi bi-box-seam"></i>
+          Barang
+        </a>
+      </li>
+      <li>
+        <a href="http://localhost/pengiriman/page/layanan.php" class="nav-link text-mute">
+        <i class="bi bi-cash-coin"></i>
+          Layanan
+        </a>
+      </li>
 
-        <div class="kt-menu2" id="kt-menu2">
-            <a href="http://localhost/pengiriman/page/kelola_barang.php" class="p-kt1">Kelola Barang</a>
-        </div>
-
-        <div class="kt-menu3" id="kt-menu3">
-            <a href="http://localhost/pengiriman/page/layanan.php" class="p-kt1">Kelola Layanan</a>
-        </div>
-
-        <div class="kt-menu4" id="kt-menu4">
-        <?php
-            // cek hanya level admin yang bisa mengakses fungsi kelola user
-            if(isset($_SESSION['level']) && $_SESSION['level']=="admin"){
-                print "<a href='http://localhost/pengiriman/page/user.php' class='p-kt1'>Kelola User</a>";
-            }
+      <?php
+                // cek hanya level admin yang bisa mengakses fungsi kelola user
+                if(isset($_SESSION['level']) && $_SESSION['level']=="admin"){
+                    print "<li> <a href='http://localhost/pengiriman/page/user.php' class='nav-link text-mute'> <i class='bi bi-person-badge'></i> User</a></li>";
+                }
         ?>
-        </div>
+            
+
+      
+    </ul>
+    <hr>
+    
+  </div>
 
         <div class="logout">
-            <form action="../logout.php">
-            <input type="submit" value="Logout" id="logout-btn">
-            </form>
+                <button class="btn btn-outline-secondary" onclick="window.location='http://localhost/pengiriman/logout.php'"><i class="bi bi-box-arrow-in-left lg"> Logout</i></button>
         </div>
 
         
@@ -95,11 +108,12 @@
     <div class="kt-box2">
         <div class="kt-head">
             <h3 class="h3-kt2" id="h3-kt2">List Transaksi</h3>
-            <button id="buat-tr-btn" onclick="window.location='http://localhost/pengiriman/page/buat_transaksi.php'">Buat Transaksi</button>
+            <button class="btn btn-outline-success btn-sm"  onclick="window.location='http://localhost/pengiriman/page/buat_transaksi.php'">Buat Transaksi</button>
             <form class="search-bar" action="<?php $_SERVER['PHP_SELF'] ?>" method="get" id="search-bar">
                <div class="input-group">
                 <input type="search" name="cari-tr"  placeholder="Cari Transaksi" class="form-control">
                 <input type="submit" value="Cari" class="btn btn-outline-primary">
+                <button class="btn btn-primary btn-sm" id="reset" onclick="window.location='http://localhost/pengiriman/page/transaksi.php'"><i class="bi bi-arrow-clockwise"></i></button>
                </div>
             </form>
             
@@ -107,7 +121,7 @@
         <div class="kt-body" id="kt-body">
         
         <!-- tombol reset untuk menampilkan data transaksi setelah pencarian -->
-        <button id="reset" onclick="window.location='http://localhost/pengiriman/page/transaksi.php'">refresh</button>
+        
 
         <table>
 		<thead>
@@ -170,18 +184,18 @@
                     <div>
                             
                                 <!-- tombol detail mengantar user melihat detail data yang dipilih -->
-                                <button id="detail-btn" onclick="_display_detail(<?php echo $row['id']?>)">
-                                    Lihat Detail
+                                <button class="btn btn-outline-primary btn-sm" id="detail-btn" onclick="_display_detail(<?php echo $row['id']?>)">
+                                <i class="bi bi-search"></i>
                                 </button>
 
                             
-                                <button id="edit-btn" onclick="_edit_transaksi(<?php echo $row['id']?>);">
-                                    Edit
+                                <button class="btn btn-outline-success btn-sm" id="edit-btn" onclick="_edit_transaksi(<?php echo $row['id']?>);">
+                                <i class="bi bi-pencil-square"></i>
                                 </button>
 
                                 <!-- tombol hapus akan menghapus data yang dipilih -->
-                                <button id="del-btn" onclick="_delete(<?php echo $row['id']?>)">
-                                    Hapus
+                                <button class="btn btn-outline-danger btn-sm" id="del-btn" onclick="_delete(<?php echo $row['id']?>)">
+                                <i class="bi bi-trash-fill"></i>
                                 </button>
                         
                            
