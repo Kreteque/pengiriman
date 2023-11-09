@@ -193,11 +193,11 @@
                 <td >
                     <div>
                         <div>
-                            <button id="edit-btn" onclick="_edit_user(<?php echo $row['id']; ?>)">
-                                Edit
+                            <button class="btn btn-outline-success btn-sm"  id="edit-btn" onclick="_edit_user(<?php echo $row['id']; ?>)">
+                            <i class="bi bi-pencil-square"></i>
                             </button>
-                            <button id="del-btn" onclick="_delete(<?php echo $row['id']; ?>)">
-                                    Hapus
+                            <button class="btn btn-outline-danger btn-sm"  id="del-btn" onclick="_delete(<?php echo $row['id']; ?>)">
+                            <i class="bi bi-trash-fill"></i>
                             </button>
 
                             <script>
