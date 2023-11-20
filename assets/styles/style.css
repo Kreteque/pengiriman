@@ -41,11 +41,11 @@ html{
 
 .kt-user{
     width: 200px;
-    margin: 5px;
+    margin: 10px;
     height: 60px;
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
+    margin-bottom: 35px;
     /* border-bottom: 8px;
     border-bottom-style: solid;
     border-bottom-color: gray; */
@@ -84,18 +84,22 @@ html{
     border-left: 8px;
     border-left-color: cadetblue;
     border-left-style: solid;
-    margin-bottom: 27px;
+    margin-bottom: 50px;
     
 }
 
 .kt-body{
     height: fit-content;
-    width: fit-content;
+    width: 80vw;
     /* height: 500px; */
     /* background-color: aquamarine; */
-    border-left: 3px;
+    /* border-left: 3px;
     border-left-color: rgb(175, 171, 171);
-    border-left-style: solid;
+    border-left-style: solid; */
+    padding-left: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .logout{
@@ -177,3 +181,19 @@ html{
 a.nav-link{
     width: 100%;
 }
+
+.adder-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+table {
+    counter-reset: rowNumber;
+ }
+ tbody tr::before {
+    counter-increment: rowNumber;
+    content: counter(rowNumber);
+    /* padding-right: 0.3 em; */
+    text-align: center;
+ }

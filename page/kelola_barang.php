@@ -12,25 +12,7 @@
             height: 60px;
             border-radius: 50%;
         }
-        table {
-            border:1px solid #b3adad;
-            border-collapse:collapse;
-            padding:5px;
-            margin: 5px;
-        }
-        table th {
-            border:1px solid #b3adad;
-            padding:5px;
-            background: #f0f0f0;
-            color: #313030;
-        }
-        table td {
-            border:1px solid #b3adad;
-            text-align:center;
-            padding:5px;
-            background: #ffffff;
-            color: #313030;
-        }
+        
     </style>
 
 <link rel="stylesheet" href="../assets/styles/bootstrap.min.css">
@@ -58,23 +40,23 @@
             </div>
         </div>
 
-    <div class="text-white bg-light">
+    <div class="text-white bg-info-subtle rounded h-75">
     
     <ul class="nav nav-pills flex-column mb-auto mt-auto">
       <li class="nav-item">
-        <a href="http://localhost/pengiriman/page/transaksi.php" class="nav-link text-mute " aria-current="page">
+        <a href="http://localhost/pengiriman/page/transaksi.php" class="nav-link text-dark " aria-current="page">
         <i class="bi bi-stickies"></i>
           Transaksi
         </a>
       </li>
       <li>
-        <a href="http://localhost/pengiriman/page/kelola_barang.php" class="nav-link text-mute active">
+        <a href="http://localhost/pengiriman/page/kelola_barang.php" class="nav-link text-light bg-info  active">
         <i class="bi bi-box-seam"></i>
           Barang
         </a>
       </li>
       <li>
-        <a href="http://localhost/pengiriman/page/layanan.php" class="nav-link text-mute">
+        <a href="http://localhost/pengiriman/page/layanan.php" class="nav-link text-dark">
         <i class="bi bi-cash-coin"></i>
           Layanan
         </a>
@@ -83,7 +65,7 @@
       <?php
                 // cek hanya level admin yang bisa mengakses fungsi kelola user
                 if(isset($_SESSION['level']) && $_SESSION['level']=="admin"){
-                    print "<li> <a href='http://localhost/pengiriman/page/user.php' class='nav-link text-mute'> <i class='bi bi-person-badge'></i> User</a></li>";
+                    print "<li> <a href='http://localhost/pengiriman/page/user.php' class='nav-link text-dark'> <i class='bi bi-person-badge'></i> User</a></li>";
                 }
         ?>
             
@@ -104,7 +86,7 @@
         <div class="kt-box2">
             <div class="kt-head">
                 <h3 class="h3-kt2">Kelola Barang</h3>
-                <form class="search-bar" action="" method="get">
+                <form class="search-bar position-absolute top-10 end-0" action="" method="get">
                 <div class="input-group">
                     <input type="search" name="cari-tr" id="" placeholder="Cari Barang" class="form-control">
                     <input type="submit" value="Cari" class="btn btn-outline-primary">
@@ -113,26 +95,25 @@
                 </form>
             </div>
             
-            <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" id="input-form">
+
+        <div class="kt-body">
+
+        <form class="adder-form" action="<?php $_SERVER['PHP_SELF']; ?>" method="post" id="input-form">
             <div class="input-group mb-5">
                 <input type="text" name="tambah-jenis-br" placeholder="Tambah Jenis Barang" id="" >
                 <input type="submit" value="Tambah"  class="btn btn-success btn-sm"> <br> <br>
             </div>
-            </form>
-
+        </form>
             
-
-            <div class="kt-body">
-            
-        <table>
-		<thead>
+        <table class="table table-lg">
+		<thead class="table-secondary">
 			<tr>
-				<th>ID</th>
+				<th>No</th>
 				<th>Jenis Barang</th>
                 <th>Opsi</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody >
 
             <?php
              include "../koneksi.php";
@@ -166,7 +147,7 @@
 
 			<tr id="opsi">
 
-				<td><?php echo $row["id_barang"]; ?></td>
+				<!-- <td><?php echo $row["id_barang"]; ?></td> -->
 				<td id="<?php echo $row['id_barang']; ?>"><?php echo $row["jenis_barang"]; ?></td>
             
                 <td >

@@ -12,25 +12,7 @@
             height: 60px;
             border-radius: 50%;
         }
-        table {
-            border:1px solid #b3adad;
-            border-collapse:collapse;
-            padding:5px;
-            margin: 5px;
-        }
-        table th {
-            border:1px solid #b3adad;
-            padding:5px;
-            background: #f0f0f0;
-            color: #313030;
-        }
-        table td {
-            border:1px solid #b3adad;
-            text-align:center;
-            padding:5px;
-            background: #ffffff;
-            color: #313030;
-        }
+        
     </style>
 
     <link rel="stylesheet" href="../assets/styles/bootstrap.min.css">
@@ -62,23 +44,23 @@
             </div>
         </div>
 
-    <div class="text-white bg-light">
+    <div class="text-white bg-info-subtle rounded h-75 ">
     
-    <ul class="nav nav-pills flex-column mb-auto mt-auto">
+    <ul class="nav nav-pills flex-column">
       <li class="nav-item">
-        <a href="http://localhost/pengiriman/page/transaksi.php" class="nav-link text-mute active" aria-current="page">
+        <a href="http://localhost/pengiriman/page/transaksi.php" class="nav-link text-light bg-info  active" aria-current="page">
         <i class="bi bi-stickies"></i>
           Transaksi
         </a>
       </li>
-      <li>
-        <a href="http://localhost/pengiriman/page/kelola_barang.php" class="nav-link text-mute">
+      <li class="nav-item">
+        <a href="http://localhost/pengiriman/page/kelola_barang.php" class="nav-link text-dark">
         <i class="bi bi-box-seam"></i>
           Barang
         </a>
       </li>
       <li>
-        <a href="http://localhost/pengiriman/page/layanan.php" class="nav-link text-mute">
+        <a href="http://localhost/pengiriman/page/layanan.php" class="nav-link text-dark">
         <i class="bi bi-cash-coin"></i>
           Layanan
         </a>
@@ -87,7 +69,7 @@
       <?php
                 // cek hanya level admin yang bisa mengakses fungsi kelola user
                 if(isset($_SESSION['level']) && $_SESSION['level']=="admin"){
-                    print "<li> <a href='http://localhost/pengiriman/page/user.php' class='nav-link text-mute'> <i class='bi bi-person-badge'></i> User</a></li>";
+                    print "<li> <a href='http://localhost/pengiriman/page/user.php' class='nav-link text-dark'> <i class='bi bi-person-badge'></i> User</a></li>";
                 }
         ?>
             
@@ -109,7 +91,7 @@
         <div class="kt-head">
             <h3 class="h3-kt2" id="h3-kt2">List Transaksi</h3>
             <button class="btn btn-outline-success btn-sm"  onclick="window.location='http://localhost/pengiriman/page/buat_transaksi.php'">Buat Transaksi</button>
-            <form class="search-bar" action="<?php $_SERVER['PHP_SELF'] ?>" method="get" id="search-bar">
+            <form class="search-bar position-absolute top-10 end-0" action="<?php $_SERVER['PHP_SELF'] ?>" method="get" id="search-bar">
                <div class="input-group">
                 <input type="search" name="cari-tr"  placeholder="Cari Transaksi" class="form-control">
                 <input type="submit" value="Cari" class="btn btn-outline-primary">
@@ -123,17 +105,17 @@
         <!-- tombol reset untuk menampilkan data transaksi setelah pencarian -->
         
 
-        <table>
-		<thead>
+        <table class="table table-lg">
+		<thead class="table-secondary">
 			<tr>
-				<th>ID</th>
+				<th>No</th>
 				<th>Nama Pengirim</th>
 				<th>Nama Penerima</th>
 				<th>Jenis Layanan</th>
                 <th>Opsi</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="table-group-divider">
 
             <?php
              include "../koneksi.php";
@@ -175,7 +157,7 @@
 
 			<tr>
 
-				<td><?php echo $row["id_transaksi"]; ?></td>
+				<!-- <td><?php echo $row["id_transaksi"]; ?></td> -->
 				<td><?php echo $row["nama_pengirim"]; ?></td>
 				<td><?php echo $row["nama_penerima"]; ?></td>
 				<td><?php echo $row["layanan"]; ?></td>
